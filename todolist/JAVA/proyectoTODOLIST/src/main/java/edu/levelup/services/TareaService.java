@@ -5,6 +5,7 @@
 package edu.levelup.services;
 
 import edu.levelup.entities.Tarea;
+import edu.levelup.entities.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
@@ -17,7 +18,7 @@ import java.util.List;
 public class TareaService {
         //agregar tarea (usuario, tarea)
 
-    public void crearTarea(Integer Usuario, Tarea unaTarea) {
+    public void crearTarea(Usuario unUsuario, Tarea unaTarea) {
         EntityManager entityManager
                 = Persistence.createEntityManagerFactory("TODOLISTPU")
                         .createEntityManager();

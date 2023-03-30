@@ -13,26 +13,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-<table>
-        <form action="tareas.jsp">
-            Agregar tarea <input type="text" name="nombre" />
-            <input type="hidden" name="agregarTarea"/>
-            <input type="submit" value="Agregar"/>
-        </form>
-        <h3>Lista de Tareas </h3>
-                <jsp:useBean class="edu.levelup.services.TareaService" scope="session" id="tareaService"/>
-        <ul>
-
-
-            <%
-                java.util.List<edu.levelup.entities.Tarea> lista = tareaService.listarTareas();
-                for (int  i = 0 ; i< lista.size(); i++){
-                    edu.levelup.entities.Tarea tarea = (edu.levelup.entities.Tarea)lista.get(i);
-                    out.println("<li>" + tarea.getIdTarea()+"  - "+ tarea.getNombre() + "</li>");
-                }
-            %>
-
-
-</table>
+        <table>
+            <jsp:useBean class="edu.levelup.entities.Tarea" scope="session" id="tareaBean"/>
+            <jsp:useBean class="edu.levelup.entities.Usuario" scope="session" id="usuarioBean"/>
+            <jsp:setProperty param="nombre" property="nombre" name="tareaBean"/>
+            <jsp:setProperty param="finalizado" property="finalizado" name="tareaBean"/>
+            <form action="tareas.jsp">
+                Agregar tarea <input type="text" name="nombre" />
+                <input type="hidden" name="agregarTarea"/>
+                <input type="submit" value="Agregar"/>
+            </form>
+            <jsp:useBean class="edu.levelup.services.TareaService" scope="session" id="tareaService" />
+            <%tareaService.crearTarea(usuarioBean, tareaBean);%>
+            <h3>Lista de Tareas </h3>
+            <ul>
+                <%
+                    java.util.List<edu.levelup.entities.Tarea> lista = tareaService.listarTareas();
+                    for (int  i = 0 ; i< lista.size(); i++){
+                        edu.levelup.entities.Tarea tarea = (edu.levelup.entities.Tarea)lista.get(i);
+                        out.println("<li>" + tarea.getIdTarea()+"  - "+ tarea.getNombre() + "</li>");
+                    }
+                %>
+        </table>
     </body>
 </html>
