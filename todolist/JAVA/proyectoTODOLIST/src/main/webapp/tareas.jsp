@@ -20,7 +20,7 @@
             <jsp:setProperty param="finalizado" property="finalizado" name="tareaBean"/>
             <form action="tareas.jsp">
                 Agregar tarea <input type="text" name="nombre" />
-                <input type="hidden" name="agregarTarea"/>
+                <input type="submit" value="NuevaTarea" />
                 <input type="submit" value="Agregar"/>
             </form>
             <jsp:useBean class="edu.levelup.services.TareaService" scope="session" id="tareaService" />

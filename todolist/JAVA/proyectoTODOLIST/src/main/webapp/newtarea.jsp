@@ -24,12 +24,14 @@
         <a href="login.jsp"> Intente nuevamente </a>
         <%} else{ %>
         <form action="tareas.jsp">
-            
+            Agregar tarea <input type="text" name="nombre" />
+            <input type="submit" value="NuevaTarea" />
+            <input type="submit" value="Agregar"/>
         </form>
-        </ul>
+    </ul>
 
 
-        <%}%>
+    <%}%>
 
-    </body>
+</body>
 </html>
